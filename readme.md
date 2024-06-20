@@ -197,21 +197,219 @@ Since the second put operation replaced the value associated with o1 (which is t
 -Question 12:
 a protected attribute is visible from a class that belongs to the same package.
 true
-Yes, it is true that a protected attribute is visible from a class that belongs to the same package. In Java, the protected access modifier has package-level visibility in addition to subclass visibility. This means that:
+Yes, it is true that a protected attribute is visible from a class that belongs to the same package.
+ In Java, the protected access modifier has package-level visibility in addition to subclass visibility. This means that:
 
 Within the same package: Any class in the same package as the class containing the protected member can access the protected member.
 In subclasses: Any subclass, even if it is in a different package, can access the protected member.
 
 -Question 13:
+try to improve the code displayed in the answer editor
+by keeping the current behavior of the program.
+
+```java
+abstract class  Animal{}
+class Dog extends Animal{
+    String name;
+
+    Dog(String name){
+        this.name = name;
+    }
+
+    String getName(){
+        return name;
+    }
+}
+class Cat extends Animal{
+    String name;
+
+    Cat (String name){
+        this.name = name;
+    }
+
+    String getName(){
+        return name;
+    }
+}
 
 
 
 
 
 
+```
 
 
 
+```java
+//test
+Dog sammy = new Dog("Sammy");
+Cat caramel = new Cat("Caramel");
+
+System.out.println(Application.getAnimalName(sammy));
+System.out.println(Application.getAnimalName(caramel));
+
+```
+answer :
+```java
+class Animal {
+    protected String name;
+
+    Animal(String name) {
+        this.name = name;
+    }
+
+    String getName() {
+        return name;
+    }
+}
+
+class Dog extends Animal {
+    Dog(String name) {
+        super(name);
+    }
+}
+
+class Cat extends Animal {
+    Cat(String name) {
+        super(name);
+    }
+}
+
+class Application {
+    static String getAnimalName(Animal animal) {
+        return animal.getName();
+    }
+
+    public static void main(String[] args) {
+        Dog sammy = new Dog("Sammy");
+        Cat caramel = new Cat("Caramel");
+
+        System.out.println(getAnimalName(sammy));
+        System.out.println(getAnimalName(caramel));
+    }
+}
+
+```
+
+-Question 14;
+Implement the method findLargest (numbers) , so it returns the largest number from the numbers array.
+Notes:
+numbers always contains at least one element, and never contains more than numberscontains only integers.10 elements.
+The integers are ranged from
+-2^31 to+2°31 - 1 (they always fit in a 32-bit
+signed integer).
+
+Template :
+```java 
+import java.util.*;
+Inport com.google.gson.gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+class Solution {
+/**
+﻿﻿@param numbers Some integer numbers.
+﻿﻿@return The largest value among the numbers given in parameters.
+﻿/
+public static int findLargest (List«Integer numbers) /
+// Write your code here
+return 184;
+
+/* Ignore and do not change the code below /
+
+```
+answer :
+
+```java
+
+import java.util.*;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+
+class Solution {
+    /**
+     * @param numbers Some integer numbers.
+     * @return The largest value among the numbers given in parameters.
+     */
+    public static int findLargest(List<Integer> numbers) {
+        // Initialize the largest number as the minimum possible integer value
+        int largest = Integer.MIN_VALUE;
+        
+        // Iterate through the list to find the largest number
+        for (int number : numbers) {
+            if (number > largest) {
+                largest = number;
+            }
+        }
+        
+        // Return the largest number found
+        return largest;
+    }
+
+    /* Ignore and do not change the code below */
+}
+
+```
 
 
+-Question 15;
+
+StringUtils. concat (String[l strings) should join character strings end to end
+For example, from an array which contains "f*, "o"To". "bar" it should result
+"foobar"
+Input: strings always contains at least one element.
+Implement StringUtils. concat (Stringll strings).
+
+```java
+class StringUtils {
+
+    /**
+     * Concatenates the given array of strings.
+     * @param strings An array of strings to concatenate.
+     * @return A single string resulting from concatenation of all the strings in the array.
+     */
+    static String concat(String[] strings) {
+        // Initialize a StringBuilder to efficiently concatenate strings
+        StringBuilder result = new StringBuilder();
+
+        // Iterate through the array of strings and append each one to the StringBuilder
+        for (String str : strings) {
+            result.append(str);
+        }
+
+        // Convert the StringBuilder to a String and return the result
+        return result.toString();
+    }
+
+    public static void main(String[] args) {
+        // Test the concat method with an example array
+        String[] testArray = {"f", "o", "o", "b", "a", "r"};
+        System.out.println(concat(testArray));  // Output should be "foobar"
+    }
+}
+
+```
+
+
+-Question 16;
+
+public class A {}
+
+who is the parent of class A ?
+
+answer :
+In Java, every class implicitly extends the Object class if it does not explicitly extend another class. The Object class is the root of the class hierarchy. Every class has Object as a superclass, either directly or indirectly.
+
+The parent of class A is java.lang.Object.
+
+-question 17;
+
+String s;
+what is the value of s ?
+
+In Java, the default value of an uninitialized string is null. Therefore, the correct answer is a. Null. When a string variable is declared but not initialized, it automatically takes the value of null.
+
+
+-Question 18;
 
