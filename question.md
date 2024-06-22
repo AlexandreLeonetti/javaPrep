@@ -107,3 +107,19 @@ For example, from an array which contains "f*, "o"To". "bar" it should result
 Input: strings always contains at least one element.
 Implement StringUtils. concat (Stringll strings).
 
+-Question 16;
+
+public class A {}
+
+who is the parent of class A ?
+
+-question 17;
+
+String s;
+what is the value of s ?
+
+
+-Question 18:
+
+
+
