@@ -1,0 +1,16 @@
+my-java-project/
+├── src/
+│   └── main/
+│       └── java/
+│           └── Calculator.java
+│   └── test/
+│       └── java/
+│           └── CalculatorTest.java
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+└── pom.xml
+
+
+Create a CI workflow file at .github/workflows/ci.yml
+

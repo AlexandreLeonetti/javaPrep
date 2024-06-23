@@ -1,0 +1,52 @@
+my-java-project/
+├── src/
+│   └── main/
+│       └── java/
+│           └── Calculator.java
+│   └── test/
+│       └── java/
+│           └── CalculatorTest.java
+└── pom.xml
+
+
+
+Setting Up Jenkins
+Install Jenkins:
+
+Download and install Jenkins from the official website.
+Follow the installation instructions for your operating system.
+Start Jenkins:
+
+Start the Jenkins service and open the Jenkins UI in your web browser at http://localhost:8080.
+Install Required Plugins:
+
+Go to Manage Jenkins > Manage Plugins.
+Install the Maven Integration plugin.
+Configure Jenkins:
+
+Go to Manage Jenkins > Global Tool Configuration.
+Add JDK installation (e.g., JDK 11).
+Add Maven installation (e.g., Maven 3.6.3).
+Create a Jenkins Job:
+
+Go to Dashboard and click New Item.
+Enter a name for the job (e.g., MyJavaProject) and select Freestyle project.
+Click OK.
+Configure the Job:
+
+Source Code Management:
+Select Git.
+Enter the repository URL (e.g., https://github.com/yourusername/my-java-project.git).
+If the repository is private, enter your credentials.
+Build Triggers:
+Optionally, select Poll SCM and set a schedule (e.g., H/5 * * * * to poll every 5 minutes).
+Build Environment:
+Optionally, set up any build environments or options required.
+Build:
+Click Add build step.
+Select Invoke top-level Maven targets.
+Enter clean test as the Goals.
+Save and Build:
+
+Click Save to save the job configuration.
+Click Build Now to run the job immediately
