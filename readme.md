@@ -415,19 +415,18 @@ In Java, the default value of an uninitialized string is null. Therefore, the co
 -Question 18;
 // Java code below
 ```java
-import
-java util.*;
-import
-Laxanio.*;
-import javanio.*;
+import java util.*;
+import java.io.*;
+import java.nio.*;
 import lava.math.*;
+
 class Solution {
-static int sumRange(int[] ints) {
-int sum = 0;
-for (int i - 1; i < ints.length; i++) {
-int n - ints[il;
-if (n >= 10 || n <= 100) sum += n;
-return sum;
+    static int sumRange(int[] ints) {
+    int sum = 0;
+    for (int i - 1; i < ints.length; i++) {
+        int n - ints[i];
+        if (n >= 10 || n <= 100) sum += n;
+    return sum;
 }
 }
 ```
@@ -435,7 +434,7 @@ Solution.sumRange should return the sum of the integers having a value between 1
 Fix Solution.sumkange:
 Note: the ints parameter is never null
 
-int[] ints1 - l 1, 20, 3, 10. -2, 100 J;
+int[] ints1 - [ 1, 20, 3, 10. -2, 100 ];
 it resultl = Solution. sumRange(ints1) ;
 System.out.println("result: "
 + resultl + , expected result: 130*);
@@ -470,8 +469,8 @@ class Solution {
 ```
 
 -Question 19:
-A.a(int 1, int j should retur sum is equal to 1.
-true if one of the arguments equals 1 or if their
+A.a(int i, int j should retur sum is equal to 1.
+true if one of the arguments equals 1 or if their sum is equal to 1;
 
 
 
@@ -503,13 +502,15 @@ class A {
 
 Make Counter.increment() thread safe :
 ```java
+
 class Counter {
-private static int count = 0;
-//Increments count in a thread-safe manner.
-public static int increment() {
-count = count + 1;
-return count;
-}}
+    private static int count = 0;
+    //Increments count in a thread-safe manner.
+    public static int increment() {
+        count = count + 1;
+        return count;
+    }
+}
 
 ```
 
@@ -541,28 +542,104 @@ class Counter {
 }
 
 ```
+example without sync :
 
+```java
+class Counter {
+    private static int count = 0;
+
+    // Increments count in a thread-safe manner.
+    public static int increment() {
+        count = count + 1;
+        return count;
+    }
+}
+
+class CounterThread extends Thread {
+    public void run() {
+        for (int i = 0; i < 1000; i++) {
+            Counter.increment();
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) throws InterruptedException {
+        Thread t1 = new CounterThread();
+        Thread t2 = new CounterThread();
+
+        t1.start();
+        t2.start();
+
+        t1.join();
+        t2.join();
+
+        System.out.println("Final count (without synchronization): " + Counter.increment());
+    }
+}
+```
+
+example with sync :
+```java
+
+class Counter {
+    private static int count = 0;
+
+    // Increments count in a thread-safe manner.
+    public synchronized static int increment() {
+        count = count + 1;
+        return count;
+    }
+}
+
+class CounterThread extends Thread {
+    public void run() {
+        for (int i = 0; i < 1000; i++) {
+            Counter.increment();
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) throws InterruptedException {
+        Thread t1 = new CounterThread();
+        Thread t2 = new CounterThread();
+
+        t1.start();
+        t2.start();
+
+        t1.join();
+        t2.join();
+
+        System.out.println("Final count (with synchronization): " + Counter.increment());
+    }
+}
+```
 
 -Question 21 :
+
 ```java
 class A {
-/**
-	•	﻿﻿Executes the service with the given connection.
-	•	﻿/
-void a(Service s, Connection c) {
-// update this code
-s. setConnection(c) ;
-s.execute():
-}
+    /**
+	    Executes the service with the given connection.
+    */	
+    void a(Service s, Connection c) {
+        // update this code
+        s. setConnection(c) ;
+        s.execute():
+    }
 }
 
 interface Service {
-void execute()throws Exception; void setconnection (connection c);
+    void execute()throws Exception; void setconnection (connection c);
 }
+
 interface Connection {
-void commit () ;void rollback();
-void close();
+    void commit () ;
+    void rollback();
+    void close();
 }
+
 ```
 Update the code by implementing the following rules:
 • If an exception is thrown by s. execute()
@@ -630,21 +707,12 @@ class Echo{
 
 
 ```java
-import java.util.Scanner;
-
 class Echo {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Console> Java Echo ");
-        String input = scanner.nextLine(); // Read the entire line of input
 
-        String[] words = input.split(" "); // Split the input into words
-
-        for (String word : words) {
+        for (String word : args) {
             System.out.println(word); // Print each word on a new line
         }
-
-        scanner.close();
     }
 }
 
@@ -654,19 +722,20 @@ class Echo {
 
 -Question 23;
 
-Write the body of the calc(array. n1. n2)
-method
-array is an array of integers. The l and n2 parameters are integers defined by the relation
-- n2 < array. Length.
-The cale method should retur the sum of the integers of array whose index belongs to the [n1; n2] intervall
+Write the body of the calc(array. n1. n2) method.
+
+array is an array of integers.
+The n1  and n2 parameters are integers defined by the relation
+0<=n1 <= n2 < array. Length.
+The calc method should return the sum of the integers of array whose index belongs to the [n1; n2] intervall
 
 
 
 class Solution {
-//@return the sum of integers whose index is between nl and n2
-public static int calc(int[] array, int n1, int n2) {
-return 0;
-}
+    //@return the sum of integers whose index is between nl and n2
+    public static int calc(int[] array, int n1, int n2) {
+        return 0;
+    }
 }
 
 ```java
@@ -676,25 +745,18 @@ class Solution {
      */
     public static int calc(int[] array, int n1, int n2) {
         int sum = 0;
-        
-        // Ensure n1 and n2 are within valid range
-        if (n1 < 0 || n2 >= array.length || n1 > n2) {
-            throw new IllegalArgumentException("Invalid indices");
-        }
-        
-        // Calculate the sum of elements between n1 and n2 (inclusive)
         for (int i = n1; i <= n2; i++) {
             sum += array[i];
         }
-        
         return sum;
     }
 
     public static void main(String[] args) {
+        // Test cases
         int[] array = {1, 2, 3, 4, 5};
-        int n1 = 1;
-        int n2 = 3;
-        System.out.println(calc(array, n1, n2)); // Should print 9 (2 + 3 + 4)
+        System.out.println(calc(array, 1, 3)); // Should print 9 (2 + 3 + 4)
+        System.out.println(calc(array, 0, 4)); // Should print 15 (1 + 2 + 3 + 4 + 5)
+        System.out.println(calc(array, 2, 2)); // Should print 3 (3)
     }
 }
 
@@ -703,35 +765,48 @@ class Solution {
 -Question 24;
 
 
-You have to organize a chess tournamept in which players will compete head-to-head.
-Here is how we proceed to form the duels: select a first player randomly, then, select his opponent at random among the remaining participants. The pair of competitors obtained forms one of the duels of the tournament. We proceed in the same manner to form all the other pairs.
+You have to organize a chess tournament in which players will compete head-to-head.
+Here is how we proceed to form the duels: select a first player randomly,
+then, select his opponent at random among the remaining participants. 
+The pair of competitors obtained forms one of the duels of the tournament. 
+We proceed in the same manner to form all the other pairs.
+
+
 In this exercise, we would like to know how many pairs it is possible to form knowing that the order of opponents in a pair does not matter.
+
 For example, with 4 players named A, B, C and D, it is possible to get 6 different pairs : AB, AC, AD, BC, BD, CD.
+
 Implement count to return the number of possible pairs. Parameter n corresponds to the number of players.
 Try to optimize your solution so that, ideally, the duration of treatment is the same for any
 Input: 2 <= n <= 10000)
+formula is n(n-1)/2;
 
 ```java
 
-import java.util.*;
-import Java.io.*;
-Import java.nio.*;
-import  java.math.*;
-class Solution {
-/** Counts the number of pairs for n players. * /static int count (int. n) {
-}
-}
-
-```
-
-
-```java
 import java.util.*;
 import java.io.*;
 import java.nio.*;
 import java.math.*;
 
 class Solution {
+    /** Counts the number of pairs for n players. */
+    static int count (int. n) {
+
+    }
+}
+
+```
+
+
+```java
+
+import java.util.*;
+import java.io.*;
+import java.nio.*;
+import java.math.*;
+
+class Solution {
+
     /** Counts the number of pairs for n players. */
     static int count(int n) {
         if (n < 2) {
@@ -753,6 +828,17 @@ class Solution {
 -Question 25;
 which are primitive types in java ?
 
+answer :
+
+byte
+short
+int
+long
+float
+double
+char
+String
+boolaean
 
 -Question 26;
 Private static class A {}
@@ -766,13 +852,17 @@ Choose one or few answers :
 
 Answer :
 
-The statement private static class A {} defines a nested static class with a private access modifier. To determine when this class declaration is correct, we need to understand the context in which it can be used.
+The statement private static class A {} defines a nested static class with a private access modifier.
+To determine when this class declaration is correct, we need to understand the context in which it can be used.
 
 A private static nested class can only be declared within another class, and its accessibility is restricted to the enclosing class. Here are the possible scenarios:
 
 Never: This is not correct because there are cases where a private static class is valid.
-An anonymous class: This is not applicable since an anonymous class is a class without a name, and the provided declaration is not an anonymous class.
-An inner class: This is partially correct. A private static class is a form of a nested class, but it is specifically a nested static class, not an inner class (which is non-static).
+An anonymous class: This is not applicable since an anonymous class is a class without a name, 
+and the provided declaration is not an anonymous class.
+An inner class: This is partially correct. A private static class is a form of a nested class, 
+but it is specifically a nested static class, not an inner class (which is non-static).
+
 Always: This is not correct because a private static class declaration must be within another class.
 The correct answer is:
 
@@ -803,7 +893,7 @@ choose :
 
 Planet.MERCURY == Planet.VENUS; //true
 Planet.MERCURY == Planet.MERCURY; //true
-Planet.MERCURY.equals(Planet.NERCURY);// true
+Planet.MERCURY.equals(Planet.MERCURY);// true
 
 
 Answer :
@@ -854,25 +944,26 @@ returns 3;
 
 Among the following options, which class would you use to rewrite UsersService?
 
-
+```java
 class UsersService {
 ArrayList<Integer> ids = new ArrayList<Integer›();
 ArrayList<String> names = ArrayList<String>();
 
 void add(int identifiant, String nom){
-ids.add(identifiant);
-names. add (nom) ;
+    ids.add(identifiant);
+    names.add(nom);
 
-String findNameById(int id) (
-for( int i = ids.size()-1; i>=0;i—){
-if (ids.get(i) ==id){
-return names.get (1);
-}
-}
-return null;
-}
+    String findNameById(int id){
+        for( int i = ids.size()-1; i>=0;i—){
+            if (ids.get(i) ==id){
+                return names.get (i);
+            }
+        }
+        return null;
+    }
 }
 
+```
 
 Answer options to choose from :
 1 HashMap
@@ -935,7 +1026,12 @@ reader. close();
 
 
 answer :
-To improve the StreamPrinter.print method, we should handle exceptions more robustly and ensure that resources are properly closed, even in case of an exception. Using a try-with-resources statement is a good approach to automatically handle closing resources. Additionally, we'll add proper exception handling to provide a more robust implementation.
+robustness = handling with try catch finally, and adding IOException throws
+
+
+To improve the StreamPrinter.print method, we should handle exceptions more robustly and ensure that resources are properly closed,
+even in case of an exception. Using a try-with-resources statement is a good approach to automatically handle closing resources. 
+Additionally, we'll add proper exception handling to provide a more robust implementation.
 
 Here's the improved version of the StreamPrinter.print method:
 
@@ -986,9 +1082,10 @@ This implementation improves robustness by ensuring proper resource management a
 
 -Question 31;
 
-Modify the body of some methods (this can include the body of the constructor) to protect Person instances against alteration: Once a Person is created, it should not be possible to modify it.
+Modify the body of some methods (this can include the body of the constructor) to protect Person instances against alteration:
+Once a Person is created, it should not be possible to modify it.
 
-
+```java
 import java.util.Date;
 class Person {
 private String name; 
@@ -1002,9 +1099,9 @@ public String getsame (){return name;
 }
 public Date getBirthDate() {return birthDate;
 }}
-
+```
 answer :
-
+```java
 import java.util.Date;
 
 class Person {
@@ -1041,20 +1138,25 @@ class Person {
         System.out.println("Person's Birth Date after modification: " + person.getBirthDate());
     }
 }
-
+```
 
 question 32;
 
 One of your colleagues developed the program displayed in the answer editor. The Program class is used for obtaining information on a piece of text, such as the number of words it contains.
 The current code works correctly but you are asked to improve it so that the program is able to accept new commands.
-	•	﻿﻿Create an abstract class Command, containing an abstract method exec. This method is supposed to return a String, and has one parameter named text of type String:
-	•	﻿﻿Create a class WordCount Command, inherited from Command. Override the method exec. It must do the same actions as what currently does the class Program, when it receives the command "CountWords".
-	•	﻿﻿Add a method registerCommand to the class Program. This method must have two parameters:
-	•	﻿﻿commandName, of type String,
-.
-command, an instance of a class inherited from Command.
-	•	﻿﻿Change the body of the method String exec(String commandName, String text), It must execute the method exec of the corresponding registered Command. The correspondance is based on commandName. If the Program class doesn't have the required command, it must throw an IlLegalArgumentException, as it currently does.
-	•	﻿﻿The Program class must not have any dependency to WordCounter, because this dependancy will be moved to the class WordCount Command|:
+
+	Create an abstract class Command, containing an abstract method exec. 
+    This method is supposed to return a String, and has one parameter named text of type String:
+
+    Create a class WordCount Command, inherited from Command. Override the method exec. It must do the same actions as what currently does the class Program, when it receives the command "CountWords".
+
+    Add a method registerCommand to the class Program. This method must have two parameters:
+        commandName, of type String,
+        command, an instance of a class inherited from Command.
+
+    Change the body of the method String exec(String commandName, String text), It must execute the method exec of the corresponding registered Command. The correspondance is based on commandName. If the Program class doesn't have the required command, it must throw an IlLegalArgumentException, as it currently does.
+    The Program class must not have any dependency to WordCounter, because this dependancy will be moved to the class WordCount Command|:
+
 Be careful to use the exact specified names for the classes and method to add, otherwise the automatic validation will fail. These names have been put as commentaries in the starter code, so that you can copy-paste them.
 Make sure the Program class is able to associate any command to any command name (not just "CountWords"). The automatic validation will check that too.
 
@@ -1064,17 +1166,17 @@ import java.util.*;
 
 // add a class "Command" and a class "WordCountCommand here
 
-class Program (
-// add a method "registerCommand" here.
-// keep the method "exec*, but change its body.
+class Program {
+    // add a method "registerCommand" here.
+    // keep the method "exec*, but change its body.
 
-String exec(String commandName, String text) {
-if (!”CountWords". equals (commandName) ) {
-throw new IllegalArgumentException(commandName) ;
+    String exec(String commandName, String text){
+        if (!"CountWords".equals (commandName)) {
+            throw new IllegalArgumentException(commandName);
+        }
+    return WordCounter.count(text);
+    }
 }
-
-return WordCounter.count(text);
-}}
 
 
 ```
@@ -1137,12 +1239,12 @@ Question 33;
 BigInteger b = new BigInteger(“1”);
 b.add (new BigInteger (“1”));
 ```
-
 What is the value of b?
 
 The value of b remains unchanged as 1.
 
-This is because the add method in the BigInteger class does not modify the original BigInteger instance. Instead, it returns a new BigInteger instance that contains the result of the addition. In your code, you are not assigning the result of the addition to b.
+This is because the add method in the BigInteger class does not modify the original BigInteger instance. 
+Instead, it returns a new BigInteger instance that contains the result of the addition. In your code, you are not assigning the result of the addition to b.
 
 Here's the explanation with code comments:
 
@@ -1157,9 +1259,8 @@ public class Main {
         System.out.println(b); // This will print "1"
     }
 }
-
-
 ```
+
 Question 34;
 
 TreeSet<A> set = new TreeSet<A>();
@@ -1171,8 +1272,9 @@ Type the name of the interface that should be implemented by the class A.
 
 answer :
 
-The TreeSet class in Java requires that its elements implement the Comparable interface, or alternatively, a Comparator can be provided to the TreeSet to define the order of its elements. This is because TreeSet sorts its elements in a natural order or according to the specified comparator.
-
+The TreeSet class in Java requires that its elements implement the Comparable interface, 
+or alternatively, a Comparator can be provided to the TreeSet to define the order of its elements. 
+This is because TreeSet sorts its elements in a natural order or according to the specified comparator.
 So, to ensure that instances of class A can be added to a TreeSet, class A should implement the Comparable interface.
 
 Here’s an example of how class A should implement the Comparable interface:
@@ -1307,7 +1409,9 @@ answer :
 
 The interface that myobject should implement is Serializable.
 
-In Java, to serialize an object (convert it to a byte stream for storage or transmission), the object's class must implement the Serializable interface. This interface is a marker interface, which means it does not contain any methods but serves to indicate that the implementing class is capable of being serialized.
+In Java, to serialize an object (convert it to a byte stream for storage or transmission), 
+the object's class must implement the Serializable interface. 
+This interface is a marker interface, which means it does not contain any methods but serves to indicate that the implementing class is capable of being serialized.
 
 Here's how you can define a class to implement Serializable:
 

@@ -1,4 +1,21 @@
 import java.util.HashMap;
+import java.util.Scanner;
+
+class Echo {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Console> Java Echo ");
+        String input = scanner.nextLine(); // Read the entire line of input
+
+        String[] words = input.split(" "); // Split the input into words
+
+        for (String word : words) {
+            System.out.println(word); // Print each word on a new line
+        }
+
+        scanner.close();
+    }
+}
 
 class StringUtils {
 
@@ -21,11 +38,13 @@ class StringUtils {
     }
 
 }
+
+
+
+
 public class Main1{
     public static void main(String[] args){
-        String[] testArray = {"f","o","o"};
-        String res = StringUtils.concat(testArray);
-        System.out.println(res);
+        Echo e1 = new Echo();
     }
 
 }
