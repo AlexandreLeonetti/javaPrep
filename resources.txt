@@ -5,3 +5,19 @@ https://iq.opengenus.org/java-predict-output-questions/
 
 https://www.geeksforgeeks.org/java-interview-questions/
 
+
+
+
+sets :
+https://www.geeksforgeeks.org/output-of-java-program-set-1/
+https://www.geeksforgeeks.org/output-of-java-program-set-2/
+https://www.geeksforgeeks.org/output-of-java-program-set-3/
+https://www.geeksforgeeks.org/output-of-java-program-set-4/
+https://www.geeksforgeeks.org/output-of-java-program-set-5-2/
+https://www.geeksforgeeks.org/output-java-program-set-6/
+https://www.geeksforgeeks.org/output-java-program-set-7/?ref=ml_lbp
+https://www.geeksforgeeks.org/output-java-program-set-8/?ref=ml_lbp
+https://www.geeksforgeeks.org/output-java-program-set-9/?ref=ml_lbp
+https://www.geeksforgeeks.org/output-of-java-programs-set-10-garbage-collection/
+
+
